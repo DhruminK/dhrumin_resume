@@ -1,0 +1,15 @@
+[Unit]
+Description=Dhrumin Resume
+
+[Service]
+ExecStart=/home/dhrumin/Workspace/nodejs/dhrumin_resume/service_script.sh
+Restart=always
+User=dhrumin
+Group=dhrumin
+Environment=PATH=/usr/bin:/usr/local/bin:/var/node/node-v18.18.1-linux-x64/bin
+Environment=NODE_ENV=production
+Environment=PORT=8080
+WorkingDirectory=/home/dhrumin/Workspace/nodejs/dhrumin_resume
+
+[Install]
+WantedBy=multi-user.target
