@@ -8,7 +8,7 @@ import '@fontsource/poppins';
 import { css } from "@emotion/react";
 
 /// Import Necessary components
-import MainHeader from "./MainHeader.jsx";
+import { MainHeader, MainFooter } from "./MainHeader.jsx";
 import MainPage from "./MainPage.jsx";
 
 /// Get DOM element with id as 'root' which will act as a anchor for our React Application
@@ -23,12 +23,18 @@ const newFontTheme = extendTheme({
 });
 
 const MainGrid = () => (
-	<SimpleGrid columns={1} rowGap="4vh" margin="2em" overflowY="hidden">
-		<Box height="8vh" >
+	<SimpleGrid columns={1} rowGap="4vh" margin="2em" overflowY="scroll" css={css`
+			::-webkit-scrollbar {
+			background-color: unset;
+			}`}>
+		<Box>
 			<MainHeader />
 		</Box>
-		<Box height="80vh" overflowY="scroll" overflowX="hidden" >
+		<Box>
 			<Outlet />
+		</Box>
+		<Box bg="gray.800" textColor="gray.50">
+			<MainFooter />
 		</Box>
 	</SimpleGrid>
 );

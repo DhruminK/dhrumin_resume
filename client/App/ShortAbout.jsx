@@ -1,12 +1,14 @@
 /// Import External Dependencies
 import React from "react";
-import { Divider, Center, Container, Text, Link, VStack, Box, Heading } from "@chakra-ui/react";
+import { Divider, Center, Container, Text, Link, HStack, VStack, Box, Heading } from "@chakra-ui/react";
 import { Button, SimpleGrid, Card, CardHeader, CardBody, CardFooter } from "@chakra-ui/react";
 import { ExternalLinkIcon } from "@chakra-ui/icons";
 import { SiGithub } from "react-icons/si";
 import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
 import { css } from "@emotion/react";
+import { TfiInstagram, TfiLinkedin, TfiEmail } from "react-icons/tfi";
+import { VscGithubAlt } from "react-icons/vsc";
 
 export const ShortHeading = ({ title, subtitle }) => (
 	<>
@@ -77,14 +79,14 @@ const NotableProjectsCard = ({ index, title, subtitle, url }) => {
 				as={motion.div} whileHover={{scale: 1.2, zIndex: 2}} initial={{opacity: 0, x : -100 + ((index & 1) * 200) }} animate={ isInView ? animate : '' } ref={ref}>
 				<CardHeader>
 					<Center>
-						<Heading size="lg">{title}</Heading>
+						<Heading size="lg" fontFamily="poppin">{title}</Heading>
 					</Center>
 				</CardHeader>
 				<Center w="100%">
 				<Divider borderColor="gray.300" w="75%"/>
 				</Center>
 				<CardBody>
-					<Center><Text fontSize={["2xl", undefined, undefined, "xl"]}>{subtitle}</Text></Center>
+					<Center><Text fontFamily="playfair" fontSize={["2xl", undefined, undefined, "xl"]}>{subtitle}</Text></Center>
 				</CardBody>
 				<CardFooter>
 					<Center w="100%">
@@ -106,3 +108,31 @@ export const NotableProjects = () => {
 				</VStack>
 	);
 };
+
+export const MyJourney = () => {
+	return (
+		<VStack mt="10em" spacing="0em" >
+			<ShortHeading title="My Journey" subtitle="" />
+			<Text textAlign="center" fontSize={['2xl', undefined, undefined, 'xl']} fontFamily='playfair'>You can check out my Journey at <Link fontWeight="600">this page</Link>.<br />
+				This webpage describes my professional experience along with my studies and the travel I did related to that <br />
+				PS: Its really fun with lots of pictures and animations
+			</Text>
+		</VStack>
+	);
+};
+
+export const ContactMe = () => (
+	<VStack mt="10em" spacing="0em" >
+		<ShortHeading title="Contact me" />
+		<Text textAlign="center" fontSize={['2xl', undefined, undefined, 'xl']} fontFamily="playfair">
+			Always on the lookout for new experiences and opporunities<br />
+			Feel free to contact me, here are some of ways :
+		</Text>
+		<HStack mt="2em">
+			<Button leftIcon={<TfiEmail />} variant="outline" colorScheme="teal" as="a" href="mailto:dhruminkhatri@yahoo.com" rel="noopener" rel="noreferrer">Email</Button>
+			<Button leftIcon={<TfiLinkedin />} variant="outline" colorScheme="linkedin" as="a" href="https://www.linkedin.com/in/dhruminkhatri" target="_blank" rel="noopener" rel="noreferrer">LinkedIn</Button>
+			<Button leftIcon={<TfiInstagram />} variant="outline" colorScheme="instagram" href="https://www.instagram.com/dhrumin/" as="a" rel="noopener" rel="noreferrer">Instagram</Button>
+			<Button leftIcon={<VscGithubAlt />} variant="outline" as="a" href="https://github.com/DhruminK/" target="_blank" rel="noopener" rel="noreferrer">Github</Button>
+		</HStack>
+	</VStack>
+);

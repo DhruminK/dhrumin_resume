@@ -7,7 +7,7 @@ import { motion, useInView } from "framer-motion";
 import { css } from "@emotion/react";
 
 /// Import component dependencies
-import { ShortHeading, ShortAbout, ToolsUsed, NotableProjects } from "./ShortAbout.jsx";
+import { ContactMe, ShortHeading, ShortAbout, ToolsUsed, NotableProjects, MyJourney } from "./ShortAbout.jsx";
 
 const allSkills = [
 	{img: "695px-C_Programming_Language.svg", skillName: "C (Programming Language)", skillLst: undefined},
@@ -56,7 +56,7 @@ const SkillComponent = ({chkey, img, skillName, skillLst, setIcon}) => {
 				}
 				</Center>
 				<VStack spacing="1em" mt="3em">
-					<Heading>{skillName}</Heading>
+					<Heading textAlign="center" fontFamily="poppin">{skillName}</Heading>
 					{
 						Array.isArray(skillLst) && skillLst.length > 0 ? 
 							<VStack spacing="0.3em" mt="2em">
@@ -75,21 +75,22 @@ const MainBody = () => {
 	return (
 		<SimpleGrid columns={1} spacing="3em">
 			<ShortAbout />
-				<VStack spacing="0em" mt="4em" >
-					<Center w="100%">
-						<VStack w="100%">
+			<VStack spacing="0em" mt="4em" >
+				<Center w="100%">
+					<VStack w="100%">
 						<ShortHeading title="Skills" subtitle="I am good at" />
-						<SimpleGrid w="100%" boxShadow="inner" border="1px" borderRadius="xl" m="10em" p="7em" borderColor="gray.100" bg="teal.50" minChildWidth="20em" spacing="1.5em" >
-			
-						{
-							allSkills.map((ele, index) => <SkillComponent key={`SkillComponent_${index}`} chkey={index} skillName={ele.skillName} img={ele.img} skillLst={ele.skillLst} setIcon={ele.setIcon} />)
-						}
-						</SimpleGrid>
-						</VStack>
-					</Center>
-				</VStack>
+							<SimpleGrid w="100%" boxShadow="inner" border="1px" borderRadius="xl" mx="10em" p="7em" borderColor="gray.100" bg="teal.50" minChildWidth="20em" spacing="1.5em" >
+							{
+								allSkills.map((ele, index) => <SkillComponent key={`SkillComponent_${index}`} chkey={index} skillName={ele.skillName} img={ele.img} skillLst={ele.skillLst} setIcon={ele.setIcon} />)
+							}
+							</SimpleGrid>
+					</VStack>
+				</Center>
+			</VStack>
 			<ToolsUsed />
 			<NotableProjects />
+			<MyJourney />
+			<ContactMe />
 		</SimpleGrid>
 	);
 };
