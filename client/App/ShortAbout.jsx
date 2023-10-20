@@ -1,7 +1,7 @@
 /// Import External Dependencies
 import React from "react";
 import { Divider, Center, Container, Text, Link, HStack, VStack, Box, Heading } from "@chakra-ui/react";
-import { Button, SimpleGrid, Card, CardHeader, CardBody, CardFooter } from "@chakra-ui/react";
+import { Button, SimpleGrid, Card, CardHeader, CardBody, CardFooter, useColorModeValue } from "@chakra-ui/react";
 import { ExternalLinkIcon } from "@chakra-ui/icons";
 import { SiGithub } from "react-icons/si";
 import { motion, useInView } from "framer-motion";
@@ -18,9 +18,12 @@ export const ShortHeading = ({ title, subtitle }) => (
 	</>
 );
 
-export const ShortAbout = () => (
+export const ShortAbout = () => {
+	const borderColor = useColorModeValue("gray.200", "gray.900");
+
+	return (
 	<Box h="100%">
-	<Container maxW={["4xl"]} border="1px" borderColor="gray.100" p="4em" mt="2em" boxShadow="2xl" rounded={["3xl"]}  >
+	<Container maxW={["4xl"]} border="1px" borderColor={borderColor} p="4em" mt="0em" boxShadow="2xl" rounded={["3xl"]}  >
 		<Text fontSize={["4xl", undefined, undefined, "2xl"]} fontFamily="mono" fontWeight="500" as="i">Hey, my name is Dhrumin.</Text>
 		<br/>
 		<Text fontSize={["2xl", undefined, undefined, "xl"]} as="i" fontFamily="mono">
@@ -32,7 +35,7 @@ export const ShortAbout = () => (
 		</Text>
 	</Container>
 	</Box>
-);
+)};
 
 export const ToolsUsed = () => (
 		<Center >
@@ -70,7 +73,8 @@ const NotableProjectsCard = ({ index, title, subtitle, url }) => {
 		x : 0,
 		transition : {
 			type: "tween",
-			duration: 0.8
+			duration: 0.4,
+			delay: 0.14
 		}
 	};
 
@@ -97,10 +101,12 @@ const NotableProjectsCard = ({ index, title, subtitle, url }) => {
 )};
 
 export const NotableProjects = () => {
+	const gridBg = useColorModeValue("cyan.50", "gray.800");
+	const borderColor = useColorModeValue("gray.200", "gray.900");
 	return (
 				<VStack mt="4em" spacing="1em" >
 					<ShortHeading title="Notable Projects" subtitle="Projects which make me proud" />
-					<SimpleGrid spacing="2em" minChildWidth="360px" boxShadow="inner" p="2em" bg="cyan.50" border="1px" borderColor="gray.200" borderRadius="md">
+					<SimpleGrid spacing="2em" minChildWidth="360px" boxShadow="inner" p="2em" bg={gridBg} border="1px" borderColor={borderColor} borderRadius="md">
 						{
 							NotableProjectsArray.map((ele, index) => <NotableProjectsCard key={`NotableProjectCard_${index}`} title={ele.title} subtitle={ele.subtitle} index={index} url={ele.url} />)
 						}

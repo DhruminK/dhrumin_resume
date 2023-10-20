@@ -1,9 +1,9 @@
 /// Import External Dependencies
 import React from "react";
-import { Divider, Heading, Image, SimpleGrid, VStack, Skeleton, Box, Center, Text, Card, CardBody, CardHeader, CardFooter } from "@chakra-ui/react";
+import { useColorModeValue, Divider, Heading, Image, SimpleGrid, CircularProgress, VStack, Skeleton, Box, Center, Text, Card, CardBody, CardHeader, CardFooter } from "@chakra-ui/react";
 import { useEffect, useState, useRef } from "react";
 import { ChevronDownIcon } from "@chakra-ui/icons";
-import { motion, useInView } from "framer-motion";
+import { motion, useInView, useScroll } from "framer-motion";
 import { css } from "@emotion/react";
 
 /// Import component dependencies
@@ -72,6 +72,9 @@ const SkillComponent = ({chkey, img, skillName, skillLst, setIcon}) => {
 };
 
 const MainBody = () => {
+	const gridBg = useColorModeValue("teal.50", "gray.800");
+	const borderColor = useColorModeValue("gray.200", "gray.900");
+
 	return (
 		<SimpleGrid columns={1} spacing="3em">
 			<ShortAbout />
@@ -79,7 +82,7 @@ const MainBody = () => {
 				<Center w="100%">
 					<VStack w="100%">
 						<ShortHeading title="Skills" subtitle="I am good at" />
-							<SimpleGrid w="100%" boxShadow="inner" border="1px" borderRadius="xl" mx="10em" p="7em" borderColor="gray.100" bg="teal.50" minChildWidth="20em" spacing="1.5em" >
+							<SimpleGrid w="100%" boxShadow="inner" border="1px" borderRadius="xl" mx="10em" p="7em" borderColor={borderColor} bg={gridBg} minChildWidth="20em" spacing="1.5em" >
 							{
 								allSkills.map((ele, index) => <SkillComponent key={`SkillComponent_${index}`} chkey={index} skillName={ele.skillName} img={ele.img} skillLst={ele.skillLst} setIcon={ele.setIcon} />)
 							}

@@ -1,7 +1,10 @@
 import React from "react";
 import { VStack, Text, Flex, Spacer, Box, Heading, HStack, IconButton, Button } from "@chakra-ui/react";
+import { MoonIcon } from "@chakra-ui/react";
 import { TfiInstagram, TfiLinkedin } from "react-icons/tfi";
 import { SiChakraui, SiFramer, SiReact } from "react-icons/si";
+import { PiMoonLight } from "react-icons/pi";
+import { useColorMode } from "@chakra-ui/react";
 
 import { useNavigate } from "react-router-dom"
 import { VscGithubAlt } from "react-icons/vsc";
@@ -10,6 +13,7 @@ export const MainHeader = () => {
 	const navigate = useNavigate();
 	const redirectToHome = () => navigate("/");
 	const openNewWindow = url => window.open(url, "_blank", "noopener, noreferrer");
+	const { colorMode, toggleColorMode } = useColorMode();
 
 	return (
 		<Flex minWidth="max-content" alignItems="center" gap="2" margin="1.5em" borderBottom="2px" borderBottomColor="gray.200">
@@ -27,6 +31,9 @@ export const MainHeader = () => {
 			</Box>
 			<Spacer />
 			<HStack spacing="1.5em">
+				<IconButton variant="ghost" size="md"
+					onClick={toggleColorMode} 
+					icon={<PiMoonLight /> } fontSize="2em" />
 				<IconButton variant="ghost" size="md"
 					onClick={() => openNewWindow("https://www.linkedin.com/in/dhruminkhatri")}
 					icon={<TfiLinkedin />} fontSize="2em"/>
