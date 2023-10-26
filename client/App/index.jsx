@@ -1,5 +1,5 @@
 /// Import External Dependencies
-import React from "react";
+import React, { useCallback } from "react";
 import { createRoot } from "react-dom/client";
 import { createBrowserRouter, RouterProvider, Outlet } from "react-router-dom";
 import { useColorModeValue, ChakraProvider, extendTheme, SimpleGrid, Box, CircularProgress, CircularProgressLabel, ColorModeScript } from "@chakra-ui/react";
@@ -36,7 +36,8 @@ const MainGrid = () => {
 	useEffect(() => scrollYProgress.on('change', l => (changeCState(l * 100))), []);
 
 	return (
-	<SimpleGrid columns={1} rowGap="0" mx="2em" my="0.2em" overflowX="hidden" overflowY="scroll" h="98vh" ref={ref} css={css`
+		<>
+	<SimpleGrid columns={1} zIndex={2} rowGap="0" mx="2em" my="0.2em" overflowX="hidden" overflowY="scroll" h="98vh" ref={ref} css={css`
 			::-webkit-scrollbar {
 			background-color: unset;
 			}`}>
@@ -52,6 +53,7 @@ const MainGrid = () => {
 			<MainFooter />
 		</Box>
 	</SimpleGrid>
+		</>
 )};
 
 /// Initializing React Router

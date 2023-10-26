@@ -1,9 +1,9 @@
 import React from "react";
-import { VStack, Text, Flex, Spacer, Box, Heading, HStack, IconButton, Button } from "@chakra-ui/react";
-import { MoonIcon } from "@chakra-ui/react";
+import { Tooltip, VStack, Text, Flex, Spacer, Box, Heading, HStack, IconButton, Button } from "@chakra-ui/react";
+import { MoonIcon, SunIcon } from "@chakra-ui/react";
 import { TfiInstagram, TfiLinkedin } from "react-icons/tfi";
 import { SiChakraui, SiFramer, SiReact } from "react-icons/si";
-import { PiMoonLight } from "react-icons/pi";
+import { PiMoonLight, PiSunLight } from "react-icons/pi";
 import { useColorMode } from "@chakra-ui/react";
 
 import { useNavigate } from "react-router-dom"
@@ -31,18 +31,26 @@ export const MainHeader = () => {
 			</Box>
 			<Spacer />
 			<HStack spacing="1.5em">
-				<IconButton variant="ghost" size="md"
-					onClick={toggleColorMode} 
-					icon={<PiMoonLight /> } fontSize="2em" />
+				<Tooltip hasArrow label="Color theme">
+					<IconButton variant="ghost" size="md"
+						onClick={toggleColorMode} 
+						icon={colorMode === "light" ? <PiMoonLight /> : <PiSunLight />} fontSize="2em" />
+				</Tooltip>
+				<Tooltip hasArrow label="Linkedin">
 				<IconButton variant="ghost" size="md"
 					onClick={() => openNewWindow("https://www.linkedin.com/in/dhruminkhatri")}
 					icon={<TfiLinkedin />} fontSize="2em"/>
+				</Tooltip>
+				<Tooltip hasArrow label="Github">
 				<IconButton variant="ghost" size="md"
 					onClick={() => openNewWindow("https://github.com/DhruminK/")}
 					icon={<VscGithubAlt />} fontSize="2em"/>
+				</Tooltip>
+				<Tooltip hasArrow label="Instagram">
 				<IconButton variant="ghost" size="md"
 					onClick={() => openNewWindow("https://www.instagram.com/dhrumin/")}
 					icon={<TfiInstagram />} fontSize="2em" />
+				</Tooltip>
 			</HStack>
 		</Flex>
 	);
