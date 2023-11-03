@@ -4,9 +4,9 @@ import { TfiArrowCircleLeft, TfiArrowCircleRight } from "react-icons/tfi";
 import { AnimatePresence, motion } from "framer-motion";
 
 const variants = {
-	enter: (direction) => ({zIndex: 0, x: direction < 0 ? 1000 : -1000, opacity: 0, transition: { x: {type: "spring", duration: 0.5, bounce: 0}, opacity: {duration: 0.2}}}),
+	enter: (direction) => ({zIndex: 0, x: direction < 0 ? 1000 : -1000, opacity: 0, transition: { x: {type: "spring", duration: 0.6, bounce: 0}, opacity: {duration: 0.2}}}),
 	center: { zIndex: 1, x: 0, opacity: 1, transition: { delay: 0}  },
-	exit: (direction) => ({zIndex: 0, x: direction < 0 ? -1000 : 1000, opacity: 0, transition: { x: {type: "spring", duration: 0.5, bounce: 0}, opacity: {duration: 0.2}}})
+	exit: (direction) => ({zIndex: 0, x: direction < 0 ? -1000 : 1000, opacity: 0, transition: { x: {type: "spring", duration: 0.6, bounce: 0}, opacity: {duration: 0.2}}})
 
 };
 

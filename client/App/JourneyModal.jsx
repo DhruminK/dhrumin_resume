@@ -20,7 +20,7 @@ export const JourneyModal = ({ header, category, title, subtitle, img, imgDest, 
 	if (Array.isArray(img))
 	{
 		useEffect(() => img.forEach(
-							(i, index) => import(/* webpackMode : "lazy" */`../static/${imgDest}/${i}.jpg`)
+							(i, index) => import(/* webpackMode : "eager" */`../static/${imgDest}/${i}.jpg`)
 											.then(val => { setImgState(state => [...state, val]) })), []);
 	}
 

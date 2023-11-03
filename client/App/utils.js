@@ -12,6 +12,7 @@ export const allSkills = [
 export const NotableProjectsArray = [
 	{ title: 'ft_ping', subtitle: 'Recoding of "ping" command in C by creating, sending and recieving ICMP packets using open sockets', url: 'https://github.com/DhruminK/ft_ping.git' },
 	{ title: 'computerv1', subtitle: 'C program to parse polynomial equations upto quadratic and find solutions for the same', url: 'https://github.com/DhruminK/computorv1.git' },
+	{ title: 'malloc', subtitle: 'Recoding of dynamic allocation and memory management library, functions like malloc, realloc and free', url: 'https://github.com/DhruminK/malloc.git' },
 	{ title: 'nm', subtitle: 'Recoding of "nm" command in C, that reads an ELF file output all the symbols in the unit file (mainly refers to functions used in C)', url: 'https://github.com/DhruminK/nm.git' },
 	{ title: 'push_swap', subtitle: 'This project involves sorting data on a stack with a limited set of instraction and in smallest number of moves', url: 'https://github.com/DhruminK/push_swap.git' },
 	{ title: 'ft_printf', subtitle: 'Implementation of ft_printf in C using write, malloc and va_args only', url: 'https://github.com/DhruminK/ft_printf.git' },
