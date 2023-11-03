@@ -1,10 +1,10 @@
 #!/usr/bin/sh
 
 # Installing Client Side dependencies
-cd client
-rm -r dist 2> /dev/null
+#cd client
+#rm -r dist 2> /dev/null
 
-npm run prod
+#npm run prod
 
-cd ..
+#cd ..
 node index.js
