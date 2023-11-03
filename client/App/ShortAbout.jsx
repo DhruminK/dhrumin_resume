@@ -1,6 +1,6 @@
 /// Import External Dependencies
-import React from "react";
-import { HStack, Divider, Center, Container, Text, Link, VStack, Box, Heading } from "@chakra-ui/react";
+import React, { useState, useEffect, useRef } from "react";
+import { Image, HStack, SimpleGrid, Divider, Center, Container, Text, Link, VStack, Box, Heading } from "@chakra-ui/react";
 import { Button, useColorModeValue } from "@chakra-ui/react";
 import { ExternalLinkIcon } from "@chakra-ui/icons";
 import { TfiInstagram, TfiLinkedin, TfiEmail } from "react-icons/tfi";
@@ -16,10 +16,17 @@ export const ShortHeading = ({ title, subtitle }) => (
 
 export const ShortAbout = () => {
 	const borderColor = useColorModeValue("gray.200", "gray.900");
+	const [myImg, setMyImg] = useState(undefined);
+	const container = useRef(null);
+
+	useEffect(() => {import(/* webpackMode: "eager" */`../static/images/My_pic.jpg`).then(val => setMyImg(val.default)) }, []);
 
 	return (
-	<Box h="100%">
-	<Container maxW={["4xl"]} border="1px" borderColor={borderColor} p="4em" mt="0em" boxShadow="2xl" rounded={["3xl"]}  >
+	<SimpleGrid alignItems="center" gap={0} columns={1} margin="1.5em">
+	{
+		myImg ? <Center><Image src={myImg} borderTopRadius="3xl" fit="cover" htmlWidth={container.current.clientWidth} boxShadow="2xl"/></Center> : ''
+	}
+	<Container maxW={["4xl"]} ref={container} border="1px" borderColor={borderColor} p="4em" mt="0em" boxShadow="2xl" borderBottomRadius="3xl" >
 		<Text fontSize={["4xl", undefined, undefined, "2xl"]} fontFamily="mono" fontWeight="500" as="i">Hey, my name is Dhrumin.</Text>
 		<br/>
 		<Text fontSize={["2xl", undefined, undefined, "xl"]} as="i" fontFamily="mono">
@@ -27,10 +34,10 @@ export const ShortAbout = () => {
 			I am currently working as a Software Engineer at <Link href="https://www.tidalwave.tech/" isExternal fontWeight="600">Tidalwave Technologies<ExternalLinkIcon ml="0.25em" mb="0.35em"/></Link>,
 			writing code to emulate LTE protocol using C, Docker, JavaScript, React and many more such interesting technologies. <br />
 			I have an interest in learning new things from web technologies like React, webpack, React native to more academically inclined things like Probabilities and Linear Algebra.
-			In my spare time I enjy gaming, running and playing tennis.
+			In my spare time I enjoy gaming, running and playing tennis.
 		</Text>
 	</Container>
-	</Box>
+	</SimpleGrid>
 )};
 
 export const ToolsUsed = () => (
