@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkdhrumin_resume_frontend=self.webpackChunkdhrumin_resume_frontend||[]).push([[772],{7772:(e,n,r)=>{e.exports=r.p+"9e956adf7e5a69446b42.jpg"}}]);
